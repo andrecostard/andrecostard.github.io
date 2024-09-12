@@ -6,59 +6,59 @@
   <title>André Costa</title>
 </head>
 <body>
-  <h1>Andre</h1>
-  <div role="main" id="formulario-do-sucesso-1996268c812c4d6271e7"></div><script type="text/javascript" src="https://d2umgtt5tsqx05.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"></script><script type="text/javascript"> new RDStationForms('formulario-do-sucesso-1996268c812c4d6271e7', 'null').createForm();</script>
-  <div role="main" id="outro-form-b9e86049a2ddf285c529"></div><script type="text/javascript" src="https://d2umgtt5tsqx05.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js"></script><script type="text/javascript"> new RDStationForms('outro-form-b9e86049a2ddf285c529', 'null').createForm();</script>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dapibus leo eros, sed congue elit ultrices quis. Nulla tincidunt nulla sit amet leo dictum placerat. Nunc felis diam, vestibulum ac consequat et, convallis non eros. Nam dignissim turpis id lorem ultricies, eget vestibulum urna tincidunt. Curabitur in neque vestibulum, pretium leo quis, viverra velit. Proin ultrices congue tristique. Suspendisse tincidunt ligula lectus, vel imperdiet dolor laoreet vel. Donec tempus lectus a maximus pretium.
+  <h1>André</h1>
+  <!-- <script type="text/javascript" async src="https://d2umgtt5tsqx05.cloudfront.net/js/loader-scripts/3f6ec04e-0e53-4845-add0-f1e89724c9e2-loader.js" ></script> -->
+  <script src="./scripts.js"></script>
 
-Donec sed enim et ex finibus ultricies. In ac magna vel justo suscipit sollicitudin. Vestibulum dictum volutpat nibh, ut vestibulum elit efficitur nec. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent at consectetur neque, luctus egestas lectus. In eleifend efficitur lectus fringilla porttitor. In scelerisque nunc in mollis tristique. In et est turpis. Duis congue consectetur dictum. Quisque blandit elementum turpis et venenatis.
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js'
+    
+    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js'
+    
+    // Add Firebase products that you want to use
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js'
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
 
-Nulla sodales, ex sed ornare venenatis, nibh velit accumsan diam, mattis sodales purus mi convallis sem. Ut pretium orci sem, ut feugiat lorem porta quis. Nullam feugiat elit vel lacus porttitor, ut maximus lorem aliquet. Curabitur quis ligula nisl. Vivamus id massa cursus, interdum risus eget, sodales justo. Proin efficitur maximus condimentum. Praesent pretium id lacus iaculis feugiat. Phasellus ante lectus, lacinia gravida pretium quis, maximus et lorem. Donec ut libero lorem. Pellentesque viverra consequat blandit. Nullam gravida metus vitae est laoreet, a sodales justo dignissim. Aenean placerat ultrices viverra. Donec gravida neque non risus viverra, et ullamcorper velit lacinia.
+    
+    import { getMessaging, getToken } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-messaging.js'
 
-Nam ante risus, lacinia sed dapibus eu, porttitor vitae lorem. Sed vitae mi magna. Nam accumsan justo lobortis augue sollicitudin, quis consectetur ipsum tincidunt. Sed mattis mi urna, nec dignissim diam auctor quis. Duis vitae diam nec lacus fermentum tempus at sit amet sem. Pellentesque blandit nibh nec lectus ultricies tincidunt vel convallis elit. Fusce cursus at tortor in tincidunt. Vivamus erat nibh, imperdiet eu lacinia ac, elementum ac ante. Mauris tincidunt ipsum massa, quis accumsan turpis vehicula eu. In id quam nisi. In in lacus leo. Morbi luctus purus nisl, non elementum purus lobortis sit amet.
 
-Nunc sagittis augue vehicula erat lacinia, at malesuada nisl varius. Aenean ut diam non mi bibendum pulvinar eu in lectus. Proin at ornare neque, in finibus lorem. Sed rhoncus elit in leo elementum, nec bibendum nulla auctor. Pellentesque facilisis lorem ut lacus ornare, a blandit nunc consequat. Vivamus interdum in eros sit amet congue. Donec at leo malesuada, volutpat nunc imperdiet, maximus felis.
 
-Maecenas quis orci ante. Vestibulum sit amet sem lobortis, tempus nunc in, ornare erat. Etiam id varius erat, eget eleifend urna. Donec vulputate rhoncus erat, quis pulvinar purus porta sit amet. Maecenas commodo luctus enim non sollicitudin. Ut luctus imperdiet erat in pellentesque. Vivamus quis metus a quam elementum bibendum nec non ipsum. Sed vehicula et diam non auctor. Mauris risus dolor, egestas quis turpis ut, porta tincidunt magna. Mauris non magna ut lorem pharetra dapibus.
+    const firebaseConfig = {
+      apiKey: "AIzaSyB_g_0HldXYiFEe9pmEbftIeXzVjZV_NMo",
+      authDomain: "segunda-webpush.firebaseapp.com",
+      projectId: "segunda-webpush",
+      storageBucket: "segunda-webpush.appspot.com",
+      messagingSenderId: "911570949742",
+      appId: "1:911570949742:web:39302efead790420d7b87f",
+      measurementId: "G-WQ9KZGDFDV"
+    };
 
-Donec quis vehicula lorem, nec elementum quam. In ac justo at est lobortis sollicitudin. Vivamus rhoncus blandit ullamcorper. Nam vehicula volutpat mollis. Quisque sed lacinia ex, at ultricies nisl. Aenean ante nunc, venenatis ut tincidunt ut, sollicitudin ut elit. Suspendisse arcu erat, hendrerit et risus et, accumsan mollis eros. Quisque nec cursus nulla, et egestas odio. Nullam gravida et nisi id interdum. Etiam vitae risus orci. Mauris tempor ipsum a arcu elementum eleifend. Duis aliquam sagittis tellus, a fringilla mi ultricies eget. Duis molestie tincidunt massa vel maximus. Cras quis quam dolor. Nullam et risus in urna ultricies iaculis. Nullam nibh dolor, feugiat non convallis eu, gravida sed dolor.
 
-Cras tincidunt imperdiet nunc sed feugiat. Integer ut tellus dui. Mauris porttitor viverra molestie. Phasellus ultrices a nibh et convallis. Praesent eros est, luctus sed aliquet vel, imperdiet et nibh. Donec in ex sollicitudin, euismod odio nec, cursus ligula. Quisque commodo turpis sed justo accumsan, vel auctor neque gravida. In lacinia molestie rhoncus. Sed egestas maximus ipsum in fringilla. Vestibulum vel est nulla. Integer at auctor diam. Curabitur id maximus ipsum, luctus viverra urna. Suspendisse nec nibh nulla. Nullam eleifend enim cursus fermentum malesuada. Nulla pulvinar blandit nisi.
 
-Maecenas commodo accumsan ante, eget porttitor lorem fringilla sed. Nunc velit nunc, congue et nunc quis, ultrices lacinia massa. Nullam arcu sem, mollis ut velit a, pellentesque sagittis arcu. Proin eget sapien ut dolor mattis ullamcorper a eget nisi. Ut ac ipsum quis metus cursus mattis vitae et ipsum. Nam semper justo vitae turpis luctus, ac sollicitudin purus posuere. Fusce varius congue sapien, eu tincidunt mauris mollis quis. Nam suscipit libero id diam varius auctor. Proin dapibus ornare velit vitae scelerisque. Phasellus fermentum sodales arcu interdum sodales. Nunc tristique in ipsum nec tincidunt. Praesent eu nulla magna. Fusce tempus nibh lacinia fermentum vestibulum. Nulla lobortis vulputate dolor, vitae ornare lacus varius convallis. Ut facilisis fermentum massa, vel hendrerit ipsum semper quis. Etiam accumsan tellus non augue elementum, ut efficitur nulla tincidunt.
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
 
-Maecenas aliquam nunc at ornare aliquet. Quisque at euismod est. Maecenas bibendum mi et sollicitudin semper. Sed eu dui at purus iaculis ullamcorper gravida at neque. Etiam mattis nibh id quam vulputate consequat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi at enim at nibh blandit malesuada. Fusce at arcu vitae arcu aliquet euismod at vel nunc. In finibus, mi eget imperdiet feugiat, massa erat condimentum velit, ut suscipit neque ipsum nec lorem. Integer augue ex, elementum vel dui eu, ultrices semper tellus. Vivamus purus tortor, efficitur eget ante non, venenatis vulputate leo. Praesent sed auctor metus. Nulla laoreet dui tempus luctus tincidunt. Nam sed fermentum massa. Maecenas efficitur egestas diam sit amet faucibus. Mauris iaculis nisi lorem, vitae vestibulum orci vestibulum nec.
+    // Get registration token. Initially this makes a network call, once retrieved
+    // subsequent calls to getToken will return from cache.
+    const messaging = getMessaging();
 
-Aenean vitae nibh lectus. Nam magna velit, venenatis vitae gravida ut, blandit et lacus. Aenean at bibendum leo. Curabitur placerat, ante eu consectetur scelerisque, nulla quam sollicitudin sem, nec sagittis ligula leo vitae metus. Integer diam diam, eleifend sit amet elementum ac, rhoncus et nulla. Maecenas sit amet tortor pellentesque, rhoncus enim et, tincidunt nunc. Morbi dolor dui, commodo in vulputate at, semper eu felis. Etiam mollis dolor arcu, eu imperdiet lectus fringilla vitae.
-
-Nunc congue mattis iaculis. In id ornare justo. Ut a enim porta, mollis neque in, fringilla lorem. Praesent ut sapien in nibh mollis pharetra. Vivamus sed viverra enim. Nunc a risus id tortor sollicitudin iaculis. Donec ipsum libero, porta non urna sed, elementum fringilla orci. Curabitur quis congue lacus. Maecenas vulputate, est vel scelerisque auctor, sem nisl fringilla neque, sed ornare ipsum quam et metus. Quisque tristique vulputate tellus, ac facilisis eros gravida sit amet. Mauris tempor dictum felis, eget blandit ante placerat sit amet.
-
-Nulla nisl tellus, varius eu convallis eget, pulvinar in velit. Nam egestas ultrices erat, vel dapibus erat vestibulum a. Curabitur sit amet neque libero. Praesent molestie risus vel ipsum feugiat, nec posuere lorem finibus. Proin ac scelerisque purus. Donec eget orci imperdiet ipsum maximus consectetur vitae vel massa. Cras laoreet massa quis malesuada posuere. Fusce luctus malesuada pharetra. Nullam gravida, justo eu pretium mattis, enim arcu facilisis est, ac consectetur mi arcu malesuada est. Pellentesque eu vulputate velit. Nulla ut mauris finibus felis tempor molestie sit amet vestibulum magna. Suspendisse a ipsum orci.
-
-Mauris arcu leo, hendrerit a vehicula bibendum, laoreet vel leo. Suspendisse condimentum auctor ornare. Etiam lobortis diam libero, vitae tempor sapien imperdiet ac. Curabitur ut mi tincidunt, mollis lectus nec, pellentesque velit. Maecenas malesuada augue sed turpis finibus, sed semper velit porttitor. Nullam hendrerit turpis in nulla fringilla tristique. Suspendisse a fringilla enim, ut auctor velit. Maecenas sed magna suscipit, eleifend nunc nec, condimentum lectus. Donec non quam hendrerit urna condimentum tincidunt. Etiam eu pharetra neque. Phasellus facilisis fermentum pellentesque. Aenean in urna vel nisi malesuada tempus vel id tellus. Nulla id massa nulla.
-
-In iaculis auctor hendrerit. Maecenas tortor mi, malesuada at dignissim nec, ornare a leo. Duis condimentum libero erat, eu bibendum neque imperdiet eu. Vivamus sodales, justo et ullamcorper interdum, est turpis hendrerit purus, a sodales sem justo sit amet urna. Curabitur iaculis convallis tortor, congue hendrerit dolor. Nam faucibus consequat varius. Nulla eget mollis enim. Nulla finibus sagittis blandit. Suspendisse potenti. Nullam augue mi, hendrerit non iaculis vel, rutrum sed ante. Praesent ut iaculis nibh, id commodo dolor. Etiam egestas cursus semper.
-
-Duis non ex tincidunt, tincidunt nunc sed, lobortis sapien. Sed quis pellentesque lacus, vitae posuere lacus. Donec a semper est. Integer id tempor massa, quis auctor libero. Curabitur iaculis diam nec tincidunt euismod. Sed accumsan sed tellus ut lobortis. Donec vel consectetur tortor. Maecenas at ex et urna tincidunt euismod. Nullam odio leo, euismod at nisl sed, efficitur faucibus purus. Phasellus euismod euismod lorem, eu volutpat quam. Mauris lacinia felis vitae lobortis lacinia.
-
-Nullam nec massa sit amet orci sodales hendrerit. Vivamus finibus ac felis vitae posuere. Fusce id cursus velit. Aenean viverra accumsan eros, quis tristique ipsum faucibus et. In sodales posuere iaculis. Integer ut neque consequat, convallis libero eu, tempor turpis. Phasellus quis tellus ultrices, congue odio vitae, tristique arcu. Morbi suscipit vitae odio ac cursus. Fusce purus lectus, tincidunt sit amet nibh eget, tempus consectetur ante. Vivamus sodales turpis eu ante dignissim, eget tempus tellus tristique. Suspendisse sit amet accumsan tortor.
-
-Pellentesque placerat elit sit amet fringilla egestas. Donec et luctus ex, et eleifend neque. Maecenas rhoncus lorem quis vehicula eleifend. Vestibulum sed nunc facilisis, pharetra orci sed, imperdiet ligula. Duis viverra leo ut metus porttitor, et egestas mi pellentesque. Sed fringilla, ex a vulputate feugiat, enim justo dignissim dui, et rutrum massa diam sed est. Etiam pulvinar felis at nibh elementum dignissim. Donec venenatis ante sit amet mi porta, eu accumsan libero venenatis. In sit amet mauris erat. Cras vitae faucibus odio. Sed viverra vestibulum sem ac lacinia.
-
-Etiam eu pulvinar purus. Proin mollis, purus laoreet blandit vehicula, mauris magna viverra purus, non aliquam tellus ante in odio. Pellentesque feugiat metus non lectus elementum lobortis. Nunc imperdiet tortor sed tristique lobortis. Maecenas consectetur laoreet tortor, vitae fringilla nunc dignissim sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut vel faucibus lorem. Aenean tempor quam justo, a fringilla odio vulputate nec. Quisque ultricies hendrerit erat, vitae auctor lacus pulvinar eget. Donec et nibh sagittis tortor scelerisque pretium sit amet nec mauris. Aenean aliquet vestibulum lectus, nec malesuada mi bibendum nec. Aliquam erat volutpat. Etiam efficitur at ligula ut efficitur. Cras ultricies elit felis, a pellentesque ex semper imperdiet.
-
-Aliquam erat volutpat. Phasellus vel turpis quis neque facilisis congue vitae quis dolor. Cras rhoncus lacinia congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc eget mattis lorem, ac tempor sem. Sed lobortis odio nec neque porta, vel sagittis nisl iaculis. Phasellus at lacinia lacus. In sodales, ante at rhoncus vulputate, lacus neque porta odio, et accumsan quam augue sit amet est. 
-  <form method="post" name="meu form" id="meu-form">
-    <input type="email" name="email" id="id-email">
-    <input type="text" name="nome" id="id-nome">
-    <input type="submit" value="Enviar">
-  </form>
-
-  <script>
-    document.querySelector("#meu-form").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form submission
-      console.log("Form data:", event.target);
+    getToken(messaging, { vapidKey: "BD22tvvjxdEvcMVEd3jBUsAsoyOPBOiQbIbmXsIvnLBAsEova-b1PCuGaVM0HlfyFuFHSuWbTphnPvR9KkYxgRM" }).then((currentToken) => {
+      if (currentToken) {
+        console.log('current token for client: ', currentToken);
+        // Send the token to your server and update the UI if necessary
+        // ...
+      } else {
+        // Show permission request UI
+        console.log('No registration token available. Request permission to generate one.');
+        // ...
+      }
+    }).catch((err) => {
+      console.log('An error occurred while retrieving token. ', err);
+      // ...
     });
   </script>
- <script type="text/javascript" async src="https://d2umgtt5tsqx05.cloudfront.net/js/loader-scripts/3f6ec04e-0e53-4845-add0-f1e89724c9e2-loader.js" ></script> </body>
+
+</body>
 </html>
