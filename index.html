@@ -28,7 +28,7 @@
     import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
 
     
-    import { getMessaging, getToken } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-messaging.js'
+    import { getMessaging, getToken, onMessage} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-messaging.js'
 
 
 
@@ -63,6 +63,16 @@
       }
     }).catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
+      // ...
+    });
+
+    // Handle incoming messages. Called when:
+    // - a message is received while the app has focus
+    // - the user clicks on an app notification created by a service worker
+    //   `messaging.onBackgroundMessage` handler.
+
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
       // ...
     });
   </script>
