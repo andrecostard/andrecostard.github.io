@@ -9,10 +9,10 @@ self.addEventListener('push', event => {
     self.registration.showNotification(data.notification.title, options);
 })
 
-self.addEventListener('notificationclick', event => {
-    console.log('Notification clicked');
-    event.notification.close();
-    event.waitUntil(
-        clients.openWindow('https://www.google.com')
-    )
-})
+// self.addEventListener('notificationclick', event => {
+//     console.log('Notification clicked');
+//     event.notification.close();
+//     event.waitUntil(
+//         clients.openWindow('https://www.google.com')
+//     )
+// })
