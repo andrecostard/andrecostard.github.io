@@ -1,14 +1,26 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js'
-    
+import {
+    initializeApp
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js'
+
 // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
-import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js'
+import {
+    getAnalytics
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js'
 
 // Add Firebase products that you want to use
-import { getAuth } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js'
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
+import {
+    getAuth
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js'
+import {
+    getFirestore
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
 
 
-import { getMessaging, getToken, onMessage} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-messaging.js'
+import {
+    getMessaging,
+    getToken,
+    onMessage
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-messaging.js'
 
 
 
@@ -31,15 +43,17 @@ const app = initializeApp(firebaseConfig);
 // subsequent calls to getToken will return from cache.
 const messaging = getMessaging();
 
-getToken(messaging, { vapidKey: "BD22tvvjxdEvcMVEd3jBUsAsoyOPBOiQbIbmXsIvnLBAsEova-b1PCuGaVM0HlfyFuFHSuWbTphnPvR9KkYxgRM" }).then((currentToken) => {
+getToken(messaging, {
+    vapidKey: "BD22tvvjxdEvcMVEd3jBUsAsoyOPBOiQbIbmXsIvnLBAsEova-b1PCuGaVM0HlfyFuFHSuWbTphnPvR9KkYxgRM"
+}).then((currentToken) => {
     if (currentToken) {
-    console.log('current token for client: ', currentToken);
-    // Send the token to your server and update the UI if necessary
-    // ...
+        console.log('current token for client: ', currentToken);
+        // Send the token to your server and update the UI if necessary
+        // ...
     } else {
-    // Show permission request UI
-    console.log('No registration token available. Request permission to generate one.');
-    // ...
+        // Show permission request UI
+        console.log('No registration token available. Request permission to generate one.');
+        // ...
     }
 }).catch((err) => {
     console.log('An error occurred while retrieving token. ', err);
@@ -51,7 +65,28 @@ getToken(messaging, { vapidKey: "BD22tvvjxdEvcMVEd3jBUsAsoyOPBOiQbIbmXsIvnLBAsEo
 // - the user clicks on an app notification created by a service worker
 //   `messaging.onBackgroundMessage` handler.
 
+const showNotification = (payload) => {
+    const {
+        // It's better to send notifications as Data Message to handle it by your own SDK
+        // See https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages
+        data: { title, body, actionUrl, icon },
+    } = payload;
+
+    // See https://developer.mozilla.org/docs/Web/API/Notification
+    const notificationOptions = {
+        body,
+        icon,
+    };
+    const notification = new window.Notification(title, notificationOptions);
+
+    notification.onclick = (event) => {
+        event.preventDefault(); // prevent the browser from focusing the Notification's tab
+        window.open(actionUrl, "_blank").focus();
+    };
+};
+
 onMessage(messaging, (payload) => {
     console.log('Message received. ', payload);
+    showNotification(payload);
     // ...
 });
