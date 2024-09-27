@@ -1,6 +1,6 @@
 function registerServiceWorker() {
   return navigator.serviceWorker
-    .register('/service-worker.js')
+    .register('/sw.js')
     .then(function (registration) {
       console.log('Service worker successfully registered.');
       return registration;
