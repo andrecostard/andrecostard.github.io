@@ -41,7 +41,7 @@ import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs
 
         return getToken(messaging, {
           serviceWorkerRegistration,
-          vapidKey: "<YOUR_PUBLIC_VAPID_KEY_HERE>",
+          vapidKey: "BD22tvvjxdEvcMVEd3jBUsAsoyOPBOiQbIbmXsIvnLBAsEova-b1PCuGaVM0HlfyFuFHSuWbTphnPvR9KkYxgRM",
         })
           .then((token) => {
             // Generated a new FCM token for the client
