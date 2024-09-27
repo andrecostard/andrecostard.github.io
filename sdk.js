@@ -76,7 +76,10 @@ import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs
       body,
       icon,
       image,
-      actions: [{action: 'like', title: 'Like'}],
+      actions: [
+        { action: 'view', title: 'View' },
+        { action: 'dismiss', title: 'Dismiss' }
+     ],
     };
     const notification = new window.Notification(title, notificationOptions);
 
