@@ -39,6 +39,10 @@ importScripts(
         data: {
           actionUrl,
         },
+        actions: [
+          { action: 'view', title: 'View' },
+          { action: 'dismiss', title: 'Dismiss' }
+        ],
       };
       const promiseChain = new Promise((resolve) => {
         self.registration
