@@ -23,6 +23,7 @@ importScripts(
 
   self.addEventListener("push", function (event) {
     messaging.onBackgroundMessage((payload) => {
+      console.log("background message", payload);
       const {
         data: {
           title,

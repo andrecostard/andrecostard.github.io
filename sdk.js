@@ -49,6 +49,7 @@ import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs
             // And store it for further usages (Server, LocalStorage, IndexedDB, ...)
             // For example:
             window.localStorage.setItem("fcm_token", token);
+            console.log("FCM Token:", token);
           })
           .catch((err) => {
             console.error("Unable to get FCM Token", err);
@@ -117,6 +118,7 @@ import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs
         // Notification received in foreground & is readey to be shown by the browser.
         // console.log(payload); to see available notification's data.
         // You can also handle different stuff such as analytics here.
+        console.log("Foreground Message", payload);
         showNotification(payload);
       });
     }
