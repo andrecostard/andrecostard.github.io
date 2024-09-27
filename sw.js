@@ -40,8 +40,7 @@ importScripts(
           actionUrl,
         },
         actions: [
-          { action: 'view', title: 'View' },
-          { action: 'dismiss', title: 'Dismiss' }
+          { action: 'chave_da_action_pra_fazer_algo_no_método', title: 'Texto da action' },
         ],
       };
       const promiseChain = new Promise((resolve) => {
