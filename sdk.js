@@ -69,10 +69,14 @@ import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs
       data: { title, body, actionUrl, icon },
     } = payload;
 
+    let image = icon
+
     // See https://developer.mozilla.org/docs/Web/API/Notification
     const notificationOptions = {
       body,
       icon,
+      image,
+      actions: ['button1', 'button2'],
     };
     const notification = new window.Notification(title, notificationOptions);
 
