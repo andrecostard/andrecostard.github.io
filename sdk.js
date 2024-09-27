@@ -87,10 +87,13 @@ import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs
 
   if (!isSupported()) {
       // Notification is not supported by the browser
+      console.log("Notification is not supported by the browser");
     } else if (!isSwSupported()) {
       // Service Worker is not supported by the browser
+      console.log("Service Worker is not supported by the browser");
     } else if (window.Notification.permission === "denied") {
       // Browser's notification permission is already blocked
+      console.log("Browser's notification permission is already blocked");
     } else {
 
       const firebaseConfig = {
