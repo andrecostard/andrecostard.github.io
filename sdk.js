@@ -1,92 +1,123 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
-    initializeApp
-} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js'
+  getMessaging,
+  onMessage,
+  isSupported,
+  getToken
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging.js";
+import { isSupported as isSwSupported } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-sw.js";
 
-// If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
-import {
-    getAnalytics
-} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js'
+(async function (window) {
 
-// Add Firebase products that you want to use
-import {
-    getAuth
-} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js'
-import {
-    getFirestore
-} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
+  const registerServiceWorker = async () => {
+    try {
+      const swOptions = {
+        type: "classic",
+        scope: "/",
+      };
 
+      const sw = await window.navigator.serviceWorker.register(`/sw.js`, swOptions);
 
-import {
-    getMessaging,
-    getToken,
-    onMessage
-} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-messaging.js'
-
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyB_g_0HldXYiFEe9pmEbftIeXzVjZV_NMo",
-    authDomain: "segunda-webpush.firebaseapp.com",
-    projectId: "segunda-webpush",
-    storageBucket: "segunda-webpush.appspot.com",
-    messagingSenderId: "911570949742",
-    appId: "1:911570949742:web:39302efead790420d7b87f",
-    measurementId: "G-WQ9KZGDFDV"
-};
-
-
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-const messaging = getMessaging();
-
-getToken(messaging, {
-    vapidKey: "BD22tvvjxdEvcMVEd3jBUsAsoyOPBOiQbIbmXsIvnLBAsEova-b1PCuGaVM0HlfyFuFHSuWbTphnPvR9KkYxgRM"
-}).then((currentToken) => {
-    if (currentToken) {
-        console.log('current token for client: ', currentToken);
-        // Send the token to your server and update the UI if necessary
-        // ...
-    } else {
-        // Show permission request UI
-        console.log('No registration token available. Request permission to generate one.');
-        // ...
+      return sw
+        .update()
+        .then((registration) => {
+          return registration;
+        })
+        .catch((error) =>
+          console.error("Can not update service worker", error)
+        );
+    } catch (error) {
+      // Oops. Registration was unsucessfull
+      console.error("Can not register service worker", error);
     }
-}).catch((err) => {
-    console.log('An error occurred while retrieving token. ', err);
-    // ...
-});
+  };
 
-// Handle incoming messages. Called when:
-// - a message is received while the app has focus
-// - the user clicks on an app notification created by a service worker
-//   `messaging.onBackgroundMessage` handler.
+  const requestPermission = async (messaging) => {
+    try {
+      const permission = await window.Notification.requestPermission();
 
-const showNotification = (payload) => {
+      if (permission === "granted") {
+        const serviceWorkerRegistration = await registerServiceWorker();
+
+        return getToken(messaging, {
+          serviceWorkerRegistration,
+          vapidKey: "<YOUR_PUBLIC_VAPID_KEY_HERE>",
+        })
+          .then((token) => {
+            // Generated a new FCM token for the client
+            // You can send it to server, e.g. fetch('your.server/subscribe', { token });
+            // And store it for further usages (Server, LocalStorage, IndexedDB, ...)
+            // For example:
+            window.localStorage.setItem("fcm_token", token);
+          })
+          .catch((err) => {
+            console.error("Unable to get FCM Token", err);
+          });
+      } else {
+        console.error("Unable to grant permission", permission);
+      }
+    } catch (error) {
+      console.error("Unable to request permission", error);
+    }
+  };
+
+  const showNotification = (payload) => {
     const {
-        // It's better to send notifications as Data Message to handle it by your own SDK
-        // See https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages
-        data: { title, body, actionUrl, icon },
+      // It's better to send notifications as Data Message to handle it by your own SDK
+      // See https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages
+      data: { title, body, actionUrl, icon },
     } = payload;
 
     // See https://developer.mozilla.org/docs/Web/API/Notification
     const notificationOptions = {
-        body,
-        icon,
+      body,
+      icon,
     };
     const notification = new window.Notification(title, notificationOptions);
 
     notification.onclick = (event) => {
-        event.preventDefault(); // prevent the browser from focusing the Notification's tab
-        window.open(actionUrl, "_blank").focus();
+      event.preventDefault(); // prevent the browser from focusing the Notification's tab
+      window.open(actionUrl, "_blank").focus();
     };
-};
+  };
 
-onMessage(messaging, (payload) => {
-    console.log('Message received. ', payload);
-    showNotification(payload);
-    // ...
-});
+  if (!isSupported()) {
+      // Notification is not supported by the browser
+    } else if (!isSwSupported()) {
+      // Service Worker is not supported by the browser
+    } else if (window.Notification.permission === "denied") {
+      // Browser's notification permission is already blocked
+    } else {
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyB_g_0HldXYiFEe9pmEbftIeXzVjZV_NMo",
+        authDomain: "segunda-webpush.firebaseapp.com",
+        projectId: "segunda-webpush",
+        storageBucket: "segunda-webpush.appspot.com",
+        messagingSenderId: "911570949742",
+        appId: "1:911570949742:web:39302efead790420d7b87f",
+        measurementId: "G-WQ9KZGDFDV"
+      };
+
+      const checkIfTokenIsNotGeneratedBefore = () =>
+        !window.localStorage.getItem("fcm_token");
+
+      const app = initializeApp(
+        firebaseConfig,
+        "Give your APP a name, otherwise it will be '[DEFAULT]'"
+      );
+
+      const messaging = getMessaging(app);
+
+      if (checkIfTokenIsNotGeneratedBefore()) {
+        await requestPermission(messaging);
+      }
+
+      onMessage(messaging, (payload) => {
+        // Notification received in foreground & is readey to be shown by the browser.
+        // console.log(payload); to see available notification's data.
+        // You can also handle different stuff such as analytics here.
+        showNotification(payload);
+      });
+    }
+})(window);
